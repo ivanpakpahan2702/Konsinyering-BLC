@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Konsinyering BLC • Konsinyering Penyusunan Standar Kompetensi Teknis Peradilan Umum, Perumusan KOMPAS Peradilan (Kompetensi Aparatur Peradilan Berbasis Keahlian), Penyusunan Silabus Pembelajaran Berbasis Kompetensi, serta Pengembangan Badilum Learning Center (BLC)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Inter:wght@400;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/0/0f/Logo_Mahkamah_Agung_RI.png">
+    <style>
+        :root {
+        
+            --bg-gradient: linear-gradient(135deg, #0f172a, #1e1a4b, #2d1b3c, #9b2c6b, #1e3a5f);
+            --card-bg: rgba(10,14,30,0.5); --card-border: rgba(255,255,255,0.2); --text-color: #fff;
+            --subhead-color: #cfd8ff; --title-gradient: linear-gradient(135deg, #fff, #e0c3ff);
+            --theme-color: #ffe5b4; --theme-bg: rgba(0,0,0,0.3); --date-bg: rgba(0,0,0,0.25);
+            --btn-bg: rgba(20,25,55,0.7); --btn-hover-bg: rgba(80,90,150,0.85); --btn-border: rgba(255,255,255,0.2);
+            --zoom-btn-bg-start: #1e4b7a; --zoom-btn-bg-end: #1e3a5f; --zoom-btn-hover-start: #2a5f8f; --zoom-btn-hover-end: #2a4a6f;
+            --zoom-btn-border-left: #3b9eff;
+            --materi-btn-bg-start: rgba(39,103,103,0.8); --materi-btn-bg-end: rgba(28,45,75,0.8);
+            --materi-btn-hover-start: #2d7a7a; --materi-btn-hover-end: #1f3a5f;
+            --regist-btn-bg-start: #4a2c5e; --regist-btn-bg-end: #2e1a47; --regist-btn-hover-start: #5e3a7a; --regist-btn-hover-end: #3e235e;
+            --wa-btn-bg-start: #075e54; --wa-btn-bg-end: #128C7E; --wa-btn-hover-start: #0b6b5e; --wa-btn-hover-end: #1da38a;
+            --info-row-bg: rgba(0,0,0,0.25); --info-value-color: #f9f3c5;
+            --copy-btn-bg: rgba(255,255,255,0.08); --copy-btn-border: rgba(255,255,255,0.2);
+            --memo-trigger-bg-start: #fef3c7; --memo-trigger-bg-end: #fde68a; --memo-trigger-color: #7c4a1e;
+            --memo-trigger-hover-bg-start: #fde68a; --memo-trigger-hover-bg-end: #fbbf24;
+            --memo-paper-bg: #faf8f3; --memo-paper-text: #3e2f1c; --footer-border: rgba(255,255,255,0.2);
+        
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: 'Inter', sans-serif; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:1.5rem; position:relative; color:var(--text-color); }
+        h1,h2,h3,.event-title,.theme,.memo-header { font-family: 'Inter', sans-serif; }
+
+        .animated-bg { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-2; overflow:hidden; }
+        .gradient-core { position:absolute; top:0; left:0; width:100%; height:100%; background:var(--bg-gradient); background-size:400% 400%; animation:gradientFlow 18s ease infinite; opacity:0.9; }
+        @keyframes gradientFlow { 0%{background-position:0% 0%} 25%{background-position:50% 100%} 50%{background-position:100% 50%} 75%{background-position:50% 0%} 100%{background-position:0% 0%} }
+        .shape { position:absolute; border-radius:50%; filter:blur(65px); pointer-events:none; will-change:transform; }
+        .shape-1 { width:450px; height:450px; top:-150px; left:-100px; background:radial-gradient(circle, #ff9a9e, #fad0c4, #fbc2eb); animation:floatShape 22s infinite alternate ease-in-out; }
+        .shape-2 { width:550px; height:550px; bottom:-200px; right:-150px; background:radial-gradient(circle, #a18cd1, #fbc2eb, #84fab0); animation:floatShape 28s infinite alternate-reverse ease-in-out; opacity:0.7; }
+        .shape-3 { width:350px; height:350px; top:40%; left:60%; background:radial-gradient(circle, #43e97b, #38f9d7); animation:floatShape 19s infinite alternate ease; opacity:0.6; filter:blur(70px); }
+        .shape-4 { width:280px; height:280px; bottom:10%; left:5%; background:radial-gradient(circle, #fccb90, #d57eeb); animation:floatShape2 24s infinite alternate ease-in-out; opacity:0.5; }
+        @keyframes floatShape { 0%{ transform:translate(0,0) scale(1); } 100%{ transform:translate(70px,50px) scale(1.2); } }
+        @keyframes floatShape2 { 0%{ transform:translate(0,0) rotate(0deg) scale(1); } 100%{ transform:translate(-50px,-60px) rotate(8deg) scale(1.15); } }
+        .noise-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:repeating-radial-gradient(circle at 20% 30%, rgba(0,0,0,0.05), rgba(0,0,0,0.02) 2px, transparent 3px, transparent 6px); pointer-events:none; z-index:-1; }
+
+        .linktree-card { max-width:680px; width:100%; background:var(--card-bg); backdrop-filter:blur(16px); border-radius:2rem; padding:2rem 2rem; text-align:center; box-shadow:0 25px 45px rgba(0,0,0,0.3),0 0 0 1px rgba(255,255,255,0.08); transition:transform 0.3s ease, box-shadow 0.3s ease; border:1px solid var(--card-border); }
+        .linktree-card:hover { transform:translateY(-5px); box-shadow:0 32px 55px rgba(0,0,0,0.4); }
+        .logo { margin-bottom:1rem; } .logo-img { max-width:100px; height:auto; filter:drop-shadow(0 4px 8px rgba(0,0,0,0.3)); background:rgba(255,255,255,0.1); border-radius:20px; padding:6px; }
+        .event-title { font-size:2rem; font-weight:700; letter-spacing:-0.2px; margin:0.5rem 0 0.25rem; background:var(--title-gradient); -webkit-background-clip:text; background-clip:text; color:transparent; line-height:1.2; }
+        .subhead { font-size:0.9rem; font-weight:400; opacity:0.9; margin-bottom:0.5rem; color:var(--subhead-color); }
+        .theme { font-size:1.3rem; font-weight:600; margin:0.25rem 0; color:var(--theme-color); background:var(--theme-bg); display:inline-block; padding:0.2rem 1.2rem; border-radius:40px; backdrop-filter:blur(4px); }
+        .date { font-size:1rem; font-weight:500; margin-top:0.7rem; opacity:0.95; display:flex; align-items:center; justify-content:center; gap:8px; background:var(--date-bg); width:fit-content; margin-left:auto; margin-right:auto; padding:0.5rem 1.5rem; border-radius:30px; }
+        .memo-trigger-btn { display:inline-flex; align-items:center; gap:8px; margin-top:0.8rem; background:linear-gradient(135deg, var(--memo-trigger-bg-start), var(--memo-trigger-bg-end)); color:var(--memo-trigger-color); border:2px solid #d4a43e; padding:0.5rem 1.4rem; border-radius:50px; font-weight:700; font-size:0.9rem; cursor:pointer; transition:all 0.3s ease; font-family:'Inter',sans-serif; letter-spacing:0.3px; box-shadow:0 4px 15px rgba(251,191,36,0.3); backdrop-filter:blur(4px); }
+        .memo-trigger-btn:hover { background:linear-gradient(135deg, var(--memo-trigger-hover-bg-start), var(--memo-trigger-hover-bg-end)); color:#5c2d0a; transform:translateY(-3px); box-shadow:0 8px 25px rgba(251,191,36,0.5); border-color:#b8860b; }
+        .memo-trigger-btn i { font-size:1rem; animation:memoPulse 2s infinite; }
+        @keyframes memoPulse { 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.25); } }
+
+        .links-container { display:flex; flex-direction:column; gap:1.2rem; margin:1.5rem 0 1.5rem; }
+        .zoom-block { background:rgba(20,25,55,0.45); backdrop-filter:blur(4px); border-radius:28px; padding:0.8rem 0.8rem 1rem 0.8rem; border:1px solid rgba(255,255,255,0.15); }
+        .link-btn { display:flex; align-items:center; justify-content:center; gap:12px; background:var(--btn-bg); backdrop-filter:blur(4px); padding:1rem 1.2rem; border-radius:100px; text-decoration:none; font-weight:600; font-size:1.05rem; color:var(--text-color); transition:all 0.25s ease; border:1px solid var(--btn-border); box-shadow:0 2px 6px rgba(0,0,0,0.2); }
+        .link-btn i { font-size:1.2rem; width:1.8rem; }
+        .link-btn:hover { background:var(--btn-hover-bg); transform:scale(1.02) translateY(-2px); border-color:rgba(255,255,255,0.5); }
+        .zoom-btn { background:linear-gradient(95deg, var(--zoom-btn-bg-start), var(--zoom-btn-bg-end)); border-left:4px solid var(--zoom-btn-border-left); margin-bottom:0.8rem; }
+        .zoom-btn:hover { background:linear-gradient(95deg, var(--zoom-btn-hover-start), var(--zoom-btn-hover-end)); }
+        .materi-btn { background:linear-gradient(95deg, var(--materi-btn-bg-start), var(--materi-btn-bg-end)); border-left:4px solid #00cec9; }
+        .materi-btn:hover { background:linear-gradient(95deg, var(--materi-btn-hover-start), var(--materi-btn-hover-end)); }
+        .regist-btn { background:linear-gradient(95deg, var(--regist-btn-bg-start), var(--regist-btn-bg-end)); border-left:4px solid #c084fc; }
+        .regist-btn:hover { background:linear-gradient(95deg, var(--regist-btn-hover-start), var(--regist-btn-hover-end)); }
+        .wa-btn { background:linear-gradient(95deg, var(--wa-btn-bg-start), var(--wa-btn-bg-end)); border-left:4px solid #25D366; }
+        .wa-btn:hover { background:linear-gradient(95deg, var(--wa-btn-hover-start), var(--wa-btn-hover-end)); }
+
+        .meeting-info { display:flex; flex-direction:column; gap:0.7rem; padding:0 0.3rem; }
+        .info-row { display:flex; align-items:center; background:var(--info-row-bg); padding:0.6rem 1rem; border-radius:60px; backdrop-filter:blur(5px); border:1px solid rgba(255,255,255,0.1); font-size:0.95rem; }
+        .info-row i { width:1.8rem; font-size:1.1rem; color:#b3c7ff; }
+        .info-label { font-weight:600; margin-right:6px; color:#ddd; }
+        .info-value { font-family:'Inter',monospace; font-weight:600; letter-spacing:0.5px; color:var(--info-value-color); margin-right:auto; }
+        .copy-btn { background:var(--copy-btn-bg); border:1px solid var(--copy-btn-border); color:#e0e0ff; width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:1rem; transition:all 0.2s; backdrop-filter:blur(4px); margin-left:8px; }
+        .copy-btn:hover { background:#3a5f8f; color:white; border-color:#aac9ff; transform:scale(1.05); }
+        .copy-btn i { font-size:1rem; width:auto; margin:0; }
+
+        .custom-fields-section { margin:1.5rem 0; text-align:left; }
+        .custom-field-item { display:flex; align-items:center; justify-content:space-between; background:var(--info-row-bg); backdrop-filter:blur(4px); padding:0.6rem 1.2rem; border-radius:40px; margin-bottom:0.5rem; border:1px solid var(--btn-border); }
+        .custom-field-name { font-weight:600; font-size:0.9rem; opacity:0.9; }
+        .custom-field-value { font-weight:500; color:var(--info-value-color); }
+        .gated-btn { width:100%; cursor:pointer; background:linear-gradient(95deg, var(--regist-btn-bg-start), var(--regist-btn-bg-end)); border-left:4px solid #f59e0b; margin-bottom:0.8rem; border-radius:50px; padding:0.8rem 1.2rem; font-weight:600; transition:all 0.25s ease; color:var(--text-color); text-decoration:none; display:flex; align-items:center; justify-content:center; gap:8px; border:1px solid var(--btn-border); }
+        .gated-btn:hover { background:linear-gradient(95deg, var(--regist-btn-hover-start), var(--regist-btn-hover-end)); transform:translateY(-2px); }
+        .video-embed-wrapper, .audio-embed-wrapper { margin:0.8rem 0; border-radius:16px; overflow:hidden; box-shadow:0 10px 25px rgba(0,0,0,0.3); }
+        .video-embed-wrapper iframe { width:100%; height:240px; border:0; }
+        .audio-embed-wrapper iframe { width:100%; height:180px; border:0; }
+
+        .footer-alamat { margin-top:1.8rem; padding-top:1rem; border-top:1px solid var(--footer-border); font-size:0.75rem; opacity:0.85; display:flex; justify-content:center; align-items:center; gap:8px; flex-wrap:wrap; }
+        .footer-alamat i { font-size:0.75rem; }
+        .alamat-text { line-height:1.4; text-align:center; color:var(--text-color); }
+
+        /* Memo popup */
+        .swal2-popup.memo-popup {
+            font-family:'Inter',sans-serif; border-radius:0!important; background:transparent!important;
+            box-shadow:none!important; max-width: 560px !important;
+            width: 90% !important; max-height: 80vh;
+            padding:0!important;
+        }
+        .swal2-popup.memo-popup .swal2-html-container { margin:0!important; padding:0!important; overflow:visible!important; }
+        .swal2-popup.memo-popup .swal2-actions { margin-top:1rem!important; }
+        .swal2-popup.memo-popup .swal2-confirm {
+            background:linear-gradient(135deg, #6366f1, #4f46e5)!important; border-radius:50px!important;
+            padding:0.65rem 2rem!important; font-weight:600!important; font-size:0.95rem!important;
+            box-shadow:0 4px 15px rgba(99,102,241,0.4)!important; transition:all 0.3s ease!important;
+        }
+        .swal2-popup.memo-popup .swal2-confirm:hover {
+            background:linear-gradient(135deg, #818cf8, #6366f1)!important; transform:translateY(-2px)!important;
+            box-shadow:0 8px 22px rgba(99,102,241,0.55)!important;
+        }
+        .swal2-popup.memo-popup .swal2-close {
+            color: #555 !important; font-size: 1.8rem !important; opacity: 0.7; transition: opacity 0.2s;
+        }
+        .swal2-popup.memo-popup .swal2-close:hover { opacity: 1; color: #000 !important; }
+
+        .paper-memo-wrapper {
+            position:relative; background:var(--memo-paper-bg);
+            background-image:linear-gradient(#e8e0d5 1px, transparent 1px), linear-gradient(90deg, #e8e0d5 1px, transparent 1px), radial-gradient(ellipse at 30% 20%, #fff9f0 0%, #f5efe0 40%, #ede4d3 100%);
+            background-size:28px 28px, 28px 28px, 100% 100%; border-radius:6px;
+            padding:2.2rem 2rem 1.8rem 2rem;
+            box-shadow:0 1px 3px rgba(0,0,0,0.08), 0 6px 20px rgba(0,0,0,0.15), 0 12px 40px rgba(0,0,0,0.2), inset 0 0 0 1px rgba(255,255,255,0.5);
+            overflow-y:auto;
+            color:var(--memo-paper-text); text-align:left;
+            transform:rotate(-0.3deg); transition:transform 0.3s ease;
+        }
+        .paper-memo-wrapper:hover { transform:rotate(0deg) translateY(-2px); }
+        .paper-memo-wrapper::before {
+            content:''; position:absolute; top:-8px; left:30px; right:30px; height:16px;
+            background:repeating-linear-gradient(90deg, transparent, transparent 6px, #d4c8b8 6px, #d4c8b8 8px, transparent 8px, transparent 14px);
+            border-radius:2px 2px 0 0; opacity:0.5;
+        }
+        .paper-memo-wrapper::after {
+            content:''; position:absolute; top:-18px; left:50%; transform:translateX(-50%) rotate(-5deg);
+            width:42px; height:18px; background:linear-gradient(180deg, #b8a99a 0%, #9b8b7a 40%, #c4b5a3 100%);
+            border-radius:8px 8px 4px 4px; box-shadow:0 3px 8px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.3); z-index:5;
+        }
+        .stamp-badge {
+            position:absolute; top:20px; right:20px; width:70px; height:70px; border:3px solid #c41e3a; border-radius:50%;
+            display:flex; align-items:center; justify-content:center; color:#c41e3a; font-weight:700; font-size:0.65rem;
+            text-transform:uppercase; letter-spacing:0.5px; transform:rotate(15deg); opacity:0.7; pointer-events:none;
+            text-align:center; line-height:1.2; font-family:'Inter',sans-serif; box-shadow:0 0 0 4px rgba(196,30,58,0.08); background:rgba(255,255,255,0.3);
+        }
+        .memo-header { font-family:'Caveat',cursive; font-size:1.8rem; font-weight:700; color:#5c3d2e; margin-bottom:0.8rem; letter-spacing:0.5px; border-bottom:2px dashed #d4c8b8; padding-bottom:0.5rem; display:flex; align-items:center; gap:10px; }
+        .memo-header i { color:#c41e3a; font-size:1.4rem; }
+        .memo-body { font-family:'Caveat',cursive; font-size:1.2rem; line-height:1.7; color:#4a3520; font-weight:500; letter-spacing:0.2px; }
+        .memo-body .greeting { font-weight:700; font-size:1.3rem; color:#3e2f1c; display:block; margin-bottom:0.4rem; }
+        .memo-body .closing { display:block; margin-top:0.9rem; font-weight:700; color:#3e2f1c; font-size:1.25rem; }
+        .memo-body .highlight { background:rgba(255,215,0,0.25); padding:2px 6px; border-radius:3px; font-weight:600; }
+        .ql-align-center { text-align: center; }
+        .ql-align-right { text-align: right; }
+        .ql-align-justify { text-align: justify; }
+        .memo-body img { max-width: 100% !important; height: auto !important; display: block; }
+        .memo-body .ql-align-center img { margin-left: auto; margin-right: auto; }
+        .memo-body .ql-align-right img { margin-left: auto; margin-right: 0; }
+        .memo-lines { position:absolute; top:0; left:0; right:0; bottom:0; pointer-events:none; border-radius:6px; overflow:hidden; opacity:0.3; background:repeating-linear-gradient(0deg, transparent, transparent 27px, #c4b8a8 27px, #c4b8a8 28px); }
+        .memo-content-inner { position:relative; z-index:2; }
+
+        @media (max-width:550px) {
+            .linktree-card { padding:1.5rem 1.2rem; } .event-title { font-size:1.6rem; } .theme { font-size:1.1rem; }
+            .link-btn { padding:0.8rem 1rem; font-size:0.95rem; } .info-row { font-size:0.85rem; padding:0.5rem 0.8rem; }
+            .logo-img { max-width:75px; } .copy-btn { width:32px; height:32px; }
+            .paper-memo-wrapper { padding:1.5rem 1.2rem 1.3rem 1.2rem; } .memo-body { font-size:1rem; } .memo-header { font-size:1.4rem; }
+            .stamp-badge { width:55px; height:55px; font-size:0.55rem; top:10px; right:10px; }
+            .paper-memo-wrapper::after { width:32px; height:14px; top:-14px; }
+            .gated-btn { padding:0.8rem 1rem; font-size:0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg">
+        <div class="gradient-core"></div>
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+    </div>
+    <div class="noise-overlay"></div>
+
+    <div class="linktree-card">
+        <div class="logo"><img class="logo-img" src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Logo_Mahkamah_Agung_RI.png" alt="Logo"></div>
+        <div class="event-title">Konsinyering BLC</div>
+        <div class="subhead">Direktorat Jenderal Badan Peradilan Umum</div>
+        <div class="theme"><i class="fas fa-scale-balanced" style="margin-right:6px;"></i> Konsinyering Penyusunan Standar Kompetensi Teknis Peradilan Umum, Perumusan KOMPAS Peradilan (Kompetensi Aparatur Peradilan Berbasis Keahlian), Penyusunan Silabus Pembelajaran Berbasis Kompetensi, serta Pengembangan Badilum Learning Center (BLC)</div>
+        <div class="date"><i class="fas fa-calendar-alt"></i> 4 s.d. 7 Agustus 2026</div>
+
+        
+        <button class="memo-trigger-btn" id="openMemoBtn"><i class="fas fa-envelope-open-text"></i> 📝 Memo Penting</button>
+        
+
+        <div class="links-container">
+            <div class="zoom-block">
+                <a href="#" class="link-btn zoom-btn" id="zoomLinkBtn" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-video"></i><span>🔗 Gabung Zoom Meeting</span><i class="fas fa-arrow-right" style="margin-left:auto;"></i>
+                </a>
+                <div class="meeting-info">
+                    <div class="info-row"><i class="fas fa-id-badge"></i><span class="info-label">Meeting ID:</span><span class="info-value" id="displayMeetingId"></span><button class="copy-btn" data-target="meetingId"><i class="far fa-copy"></i></button></div>
+                    <div class="info-row"><i class="fas fa-lock"></i><span class="info-label">Passcode:</span><span class="info-value" id="displayPasscode"></span><button class="copy-btn" data-target="passcode"><i class="far fa-copy"></i></button></div>
+                </div>
+            </div>
+            <a href="#" class="link-btn materi-btn" id="materiLinkBtn" target="_blank" rel="noopener noreferrer"><i class="fas fa-folder-open"></i><span>📂 Folder Materi</span><i class="fas fa-arrow-right" style="margin-left:auto;"></i></a>
+            <a href="https://tinyurl.com/KonfirmasiKonsBLC" class="link-btn regist-btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-pen-to-square"></i><span>📋 Form Registrasi</span><i class="fas fa-arrow-right" style="margin-left:auto;"></i></a>
+            
+        </div>
+
+        
+
+        <div class="footer-alamat">
+            <i class="fas fa-building"></i><span class="alamat-text"></span>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        (function() {
+            const ZOOM_LINK = "#";
+            const MEETING_ID = "Menyusul";
+            const PASSCODE = "Menyusul";
+            const MATERI_LINK = "#";
+            const memoIsi = `<p><br></p>`;
+            const autoShow = true;
+
+            const zoomBtn = document.getElementById('zoomLinkBtn');
+            const materiBtn = document.getElementById('materiLinkBtn');
+            const displayMeetingId = document.getElementById('displayMeetingId');
+            const displayPasscode = document.getElementById('displayPasscode');
+            const openMemoBtn = document.getElementById('openMemoBtn');
+
+            if (displayMeetingId) displayMeetingId.textContent = MEETING_ID;
+            if (displayPasscode) displayPasscode.textContent = PASSCODE;
+
+            function isPlaceholder(url) { return !url || url === "#"; }
+
+            if (zoomBtn) {
+                if (!isPlaceholder(ZOOM_LINK)) {
+                    zoomBtn.href = ZOOM_LINK; zoomBtn.setAttribute('target','_blank');
+                } else {
+                    zoomBtn.href = "javascript:void(0);";
+                    zoomBtn.addEventListener('click', e => {
+                        e.preventDefault();
+                        Swal.fire({icon:'info', title:'Info', text:'Link Zoom belum diatur.', confirmButtonColor:'#4f46e5'});
+                    });
+                }
+            }
+            if (materiBtn) {
+                if (!isPlaceholder(MATERI_LINK)) {
+                    materiBtn.href = MATERI_LINK; materiBtn.setAttribute('target','_blank');
+                } else {
+                    materiBtn.href = "javascript:void(0);";
+                    materiBtn.addEventListener('click', e => {
+                        e.preventDefault();
+                        Swal.fire({icon:'info', title:'Info', text:'Folder Materi belum diatur.', confirmButtonColor:'#4f46e5'});
+                    });
+                }
+            }
+
+            async function copyText(text, label) {
+                try {
+                    await navigator.clipboard.writeText(text);
+                    Swal.fire({toast:true, position:'top-end', icon:'success', title:`✅ ${label} disalin!`, showConfirmButton:false, timer:1800});
+                } catch {
+                    const ta = document.createElement('textarea'); ta.value=text; ta.style.top='-999px'; document.body.appendChild(ta); ta.select();
+                    document.execCommand('copy'); document.body.removeChild(ta);
+                    Swal.fire({toast:true, position:'top-end', icon:'success', title:`✅ ${label} disalin!`, showConfirmButton:false, timer:1800});
+                }
+            }
+            document.querySelectorAll('.copy-btn').forEach(btn => {
+                btn.addEventListener('click', e => {
+                    e.preventDefault();
+                    const t = btn.getAttribute('data-target');
+                    if (t === 'meetingId') copyText(MEETING_ID, 'Meeting ID');
+                    else if (t === 'passcode') copyText(PASSCODE, 'Passcode');
+                });
+            });
+
+            function showMemo() {
+                if (!memoIsi.trim()) return;
+                Swal.fire({
+                    html: `<div class="paper-memo-wrapper">
+                        <div class="memo-lines"></div>
+                        <div class="stamp-badge">PENTING<br>📌</div>
+                        <div class="memo-content-inner">
+                            <div class="memo-header"><i class="fas fa-paperclip"></i> Memo Resmi</div>
+                            <div class="memo-body">${memoIsi}</div>
+                        </div>
+                    </div>`,
+                    showConfirmButton: true,
+                    confirmButtonText: '<i class="fas fa-check"></i> Saya Mengerti',
+                    showCloseButton: true,
+                    closeButtonHtml: '<i class="fas fa-times"></i>',
+                    customClass: { popup: 'memo-popup' },
+                    background: 'transparent',
+                    backdrop: 'rgba(0,0,0,0.7)',
+                    allowOutsideClick: true
+                });
+            }
+            if (openMemoBtn) openMemoBtn.addEventListener('click', showMemo);
+            if (autoShow && memoIsi.trim()) setTimeout(showMemo, 1500);
+
+            document.querySelectorAll('.gated-btn').forEach(btn => {
+                btn.addEventListener('click', e => {
+                    const startStr = btn.getAttribute('data-start');
+                    const endStr = btn.getAttribute('data-end');
+                    const name = btn.getAttribute('data-name') || 'Fitur';
+                    const linkId = btn.getAttribute('data-link-id');
+                    const encodedSpan = document.getElementById(linkId);
+                    let decodedLink = '';
+                    if (encodedSpan) {
+                        try { decodedLink = atob(encodedSpan.getAttribute('data-encoded')); } catch(er){}
+                    }
+                    const now = new Date();
+                    const start = startStr ? new Date(startStr) : null;
+                    const end = endStr ? new Date(endStr) : null;
+                    const fmt = d => d ? new Intl.DateTimeFormat('id-ID', {dateStyle:'full', timeStyle:'short', timeZone:'Asia/Jakarta'}).format(d) : '';
+                    if (start && now < start) {
+                        Swal.fire({icon:'info', title:`${name} Belum Dibuka`, html:`Dibuka pada:<br><strong>${fmt(start)} WIB</strong>`, confirmButtonColor:'#6366f1'});
+                        return;
+                    }
+                    if (end && now > end) {
+                        Swal.fire({icon:'warning', title:`${name} Telah Ditutup`, html:`Ditutup pada:<br><strong>${fmt(end)} WIB</strong>`, confirmButtonColor:'#6366f1'});
+                        return;
+                    }
+                    if (decodedLink) window.open(decodedLink, '_blank');
+                    else Swal.fire({icon:'success', title:`${name} Tersedia`, text:'Silakan lanjutkan.', confirmButtonColor:'#6366f1'});
+                });
+            });
+
+            document.addEventListener('mousemove', e => {
+                const shapes = document.querySelectorAll('.shape');
+                const mx = e.clientX / window.innerWidth, my = e.clientY / window.innerHeight;
+                shapes.forEach((s, i) => {
+                    s.style.transform = `translate(${(mx-0.5)*12*(i+0.5)}px, ${(my-0.5)*12*(i+0.8)}px) scale(1)`;
+                });
+            });
+
+            const card = document.querySelector('.linktree-card');
+            if (card) {
+                card.style.opacity = '0'; card.style.transform = 'translateY(18px)';
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.opacity = '1'; card.style.transform = 'translateY(0)';
+                }, 80);
+            }
+        })();
+    </script>
+</body>
+</html>
